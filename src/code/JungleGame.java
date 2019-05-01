@@ -1,3 +1,17 @@
+/* **************************************************************************************
+Author: theKOOO
+Project: Jungle Game Project
+Class Name: JungleGameMain.java
+
+Version #: Version 1 
+Date: As of April 19, 2019
+Language: Java
+
+
+Class Function: Sets up the game GUI (style, border, etc.) and implements handlers to 
+listen to the players actions. Creates JGameboard class object and sends calls the 
+appropriate functions passing the parameters needed. 
+*************************************************************************************** */
 package code;
 import java.awt.*;
 import java.awt.event.*;
@@ -10,27 +24,31 @@ public class JungleGame extends JFrame
 {
 	private Container contents;
 	private JGameboard game;
-   private JButton start;
-   private JLabel []black;
-   private JLabel highscore,tlabel, tcount, pointsLabel;
+    private JButton start;
+    private JLabel []black;
+    private JLabel highscore,tlabel, tcount, pointsLabel;
 	private JTextField points;
-   private JTextArea dir;
-   private JPanel directions, dummy1, dummy2,controls,TIME;
-   private JRadioButton one, two, three;
-   private ButtonGroup levelGroup;
-   private KeyListenerHandler klh;
+    private JTextArea dir;
+    private JPanel directions, dummy1, dummy2,controls,TIME;
+    private JRadioButton one, two, three;
+    private ButtonGroup levelGroup;
+    private KeyListenerHandler klh;
 	Boolean stop=false;
-   private Timer timer;
+    private Timer timer;
 	
-   DecimalFormat df= new DecimalFormat("00");
-   private int level=1, hscore=0,yourscore, cdown;
-   
+    DecimalFormat df= new DecimalFormat("00");
+    private int level=1, hscore=0,yourscore, cdown;
+
+    /* Constructor():
+     * Function: Creates the initial displayed graphics of the screen  
+     * (i.e.layout, background, window panes, instructions, etc.)
+     */
 	public JungleGame()
 	{
   		super("Jungle Maze"); 	
 		contents=getContentPane();
-   	contents.setLayout(new BorderLayout(10,10));
-      contents.setBackground(new Color(153,255,153));
+		contents.setLayout(new BorderLayout(10,10));
+		contents.setBackground(new Color(153,255,153));
    	
       //direction panel
       dir = new JTextArea("       The Goal of this game is to capture as many bananas as possible and get to the finish line in the time given.     \n"
@@ -112,7 +130,7 @@ public class JungleGame extends JFrame
 		
       //control panel
       controls= new JPanel();
-		controls.setPreferredSize(new Dimension (700,75));
+      controls.setPreferredSize(new Dimension (700,75));
       controls.setBackground(new Color(33,142,33));
       controls.setLayout(new GridLayout(3,4));
 		black= new JLabel[4];
@@ -148,6 +166,10 @@ public class JungleGame extends JFrame
 	
 	
 	}
+	
+	/* TASK: Need to incorporate database or file system to store 
+	 * scores from previous file sessions */
+	
    //method for reading the previous  high score in the file
 	public void readHighScore()
 	{
